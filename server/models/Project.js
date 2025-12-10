@@ -44,7 +44,7 @@ const projectSchema = new mongoose.Schema(
       address: String,
       city: String,
       state: String,
-      zipCode: String,
+      pinCode: String,
     },
     budget: {
       estimated: {

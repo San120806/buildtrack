@@ -4,8 +4,8 @@ import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { useAuth } from "../../context/AuthContext"
 import api from "../../services/api"
+import { formatCurrency } from "../../utils/currency"
 import Badge from "../../components/ui/Badge"
-import EmptyState from "../../components/ui/EmptyState"
 import LoadingSpinner from "../../components/ui/LoadingSpinner"
 import {
   Plus,
@@ -69,14 +69,6 @@ const Projects = () => {
       cancelled: "danger",
     }
     return variants[status] || "default"
-  }
-
-  const formatCurrency = (amount) => {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 0,
-    }).format(amount || 0)
   }
 
   if (loading) {

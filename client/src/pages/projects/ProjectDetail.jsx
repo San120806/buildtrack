@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { useParams, Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../../context/AuthContext"
 import api from "../../services/api"
+import { formatCurrency } from "../../utils/currency"
 import Badge from "../../components/ui/Badge"
 import LoadingSpinner from "../../components/ui/LoadingSpinner"
 import GanttChart from "../../components/GanttChart"
@@ -71,14 +72,6 @@ const ProjectDetail = () => {
       completed: "success",
     }
     return variants[status] || "default"
-  }
-
-  const formatCurrency = (amount) => {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 0,
-    }).format(amount || 0)
   }
 
   if (loading) {
@@ -231,7 +224,7 @@ const ProjectDetail = () => {
                         {project.location.address}
                         {project.location.city && `, ${project.location.city}`}
                         {project.location.state && `, ${project.location.state}`}
-                        {project.location.zipCode && ` ${project.location.zipCode}`}
+                        {project.location.pinCode && ` ${project.location.pinCode}`}
                       </p>
                     </div>
                   </div>

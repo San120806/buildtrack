@@ -12,6 +12,7 @@ import {
 } from "@heroicons/react/24/outline"
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts"
 import api from "../../services/api"
+import { formatCurrency } from "../../utils/currency"
 import LoadingSpinner from "../../components/ui/LoadingSpinner"
 import Badge from "../../components/ui/Badge"
 
@@ -174,7 +175,7 @@ export default function ClientDashboard() {
             <div>
               <p className="text-sm text-gray-500">Total Budget</p>
               <p className="text-xl font-bold text-gray-900">
-                ${(projects.reduce((sum, p) => sum + (p.budget?.total || 0), 0) / 1000).toFixed(0)}K
+                {formatCurrency(projects.reduce((sum, p) => sum + (p.budget?.total || 0), 0), { compact: true })}
               </p>
             </div>
           </div>
@@ -191,7 +192,7 @@ export default function ClientDashboard() {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" tick={{ fontSize: 12 }} />
               <YAxis tick={{ fontSize: 12 }} />
-              <Tooltip formatter={(value) => `$${value.toLocaleString()}`} />
+              <Tooltip formatter={(value) => formatCurrency(value)} />
               <Bar dataKey="budget" name="Budget" fill="#3B82F6" />
               <Bar dataKey="spent" name="Spent" fill="#10B981" />
             </BarChart>

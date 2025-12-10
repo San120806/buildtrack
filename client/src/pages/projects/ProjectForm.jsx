@@ -25,7 +25,7 @@ const ProjectForm = () => {
       address: "",
       city: "",
       state: "",
-      zipCode: "",
+      pinCode: "",
     },
     budget: {
       estimated: 0,
@@ -79,7 +79,7 @@ const ProjectForm = () => {
         client: project.client?._id || "",
         contractor: project.contractor?._id || "",
         architect: project.architect?._id || "",
-        location: project.location || { address: "", city: "", state: "", zipCode: "" },
+        location: project.location || { address: "", city: "", state: "", pinCode: "" },
         budget: project.budget || { estimated: 0, actual: 0, breakdown: [] },
         tags: project.tags || [],
       })
@@ -381,16 +381,18 @@ const ProjectForm = () => {
               </div>
 
               <div>
-                <label htmlFor="location.zipCode" className="label">
-                  Zip Code
+                <label htmlFor="location.pinCode" className="label">
+                  PIN Code
                 </label>
                 <input
                   type="text"
-                  id="location.zipCode"
-                  name="location.zipCode"
-                  value={formData.location.zipCode}
+                  id="location.pinCode"
+                  name="location.pinCode"
+                  value={formData.location.pinCode}
                   onChange={handleChange}
                   className="input"
+                  maxLength="6"
+                  placeholder="e.g., 400001"
                 />
               </div>
             </div>
@@ -403,7 +405,7 @@ const ProjectForm = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label htmlFor="budget.estimated" className="label">
-                Estimated Budget ($)
+                Estimated Budget (₹)
               </label>
               <input
                 type="number"
@@ -418,7 +420,7 @@ const ProjectForm = () => {
 
             <div>
               <label htmlFor="budget.actual" className="label">
-                Actual Spent ($)
+                Actual Spent (₹)
               </label>
               <input
                 type="number"

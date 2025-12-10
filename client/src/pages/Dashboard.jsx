@@ -4,9 +4,10 @@ import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 import api from "../services/api"
+import { formatCurrency } from "../utils/currency"
 import {
   FolderKanban,
-  DollarSign,
+  IndianRupee,
   CheckSquare,
   AlertTriangle,
   TrendingUp,
@@ -73,15 +74,6 @@ const Dashboard = () => {
     }
   }
 
-  const formatCurrency = (amount) => {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(amount)
-  }
-
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
@@ -120,7 +112,7 @@ const Dashboard = () => {
           title="Total Budget"
           value={formatCurrency(stats?.budget?.total || 0)}
           subtitle={`${stats?.budget?.percentUsed || 0}% utilized`}
-          icon={DollarSign}
+          icon={IndianRupee}
           color="green"
         />
         <StatCard
@@ -151,7 +143,7 @@ const Dashboard = () => {
                 <BarChart data={budgetData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                   <XAxis dataKey="name" tick={{ fontSize: 12 }} tickLine={false} />
-                  <YAxis tickFormatter={(value) => `$${value / 1000}k`} tick={{ fontSize: 12 }} tickLine={false} />
+                  <YAxis tickFormatter={(value) => formatCurrency(value, { compact: true })} tick={{ fontSize: 12 }} tickLine={false} />
                   <Tooltip
                     formatter={(value) => formatCurrency(value)}
                     contentStyle={{

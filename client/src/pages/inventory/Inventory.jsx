@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { useAuth } from "../../context/AuthContext"
 import api from "../../services/api"
+import { formatCurrency } from "../../utils/currency"
 import Badge from "../../components/ui/Badge"
 import Modal from "../../components/ui/Modal"
 import EmptyState from "../../components/ui/EmptyState"
@@ -191,13 +192,6 @@ const Inventory = () => {
       other: "default",
     }
     return variants[category] || "default"
-  }
-
-  const formatCurrency = (amount) => {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(amount || 0)
   }
 
   return (
@@ -462,7 +456,7 @@ const Inventory = () => {
               />
             </div>
             <div>
-              <label className="label">Unit Cost ($)</label>
+            <label className="label">Unit Cost (₹)</label>
               <input
                 type="number"
                 value={formData.unitCost}
