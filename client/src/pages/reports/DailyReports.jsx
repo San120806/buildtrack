@@ -49,7 +49,7 @@ const DailyReports = () => {
   const fetchProjects = async () => {
     try {
       const response = await api.get("/projects")
-      setProjects(response.data.data)
+      setProjects(response.data?.data || [])
     } catch (error) {
       console.error("Failed to fetch projects:", error)
     }
@@ -63,7 +63,7 @@ const DailyReports = () => {
       if (dateRange.end) params.append("endDate", dateRange.end)
 
       const response = await api.get(`/reports/project/${selectedProject}?${params.toString()}`)
-      setReports(response.data.data)
+      setReports(response.data?.data || [])
     } catch (error) {
       console.error("Failed to fetch reports:", error)
     } finally {

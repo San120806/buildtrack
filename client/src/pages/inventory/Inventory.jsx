@@ -58,7 +58,7 @@ const Inventory = () => {
   const fetchProjects = async () => {
     try {
       const response = await api.get("/projects")
-      setProjects(response.data.data)
+      setProjects(response.data?.data || [])
     } catch (error) {
       console.error("Failed to fetch projects:", error)
     }
@@ -73,7 +73,7 @@ const Inventory = () => {
       if (search) params.append("search", search)
 
       const response = await api.get(`/inventory/project/${selectedProject}?${params.toString()}`)
-      setItems(response.data.data)
+      setItems(response.data?.data || [])
     } catch (error) {
       console.error("Failed to fetch inventory:", error)
     } finally {

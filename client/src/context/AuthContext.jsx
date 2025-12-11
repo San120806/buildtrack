@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
       try {
         api.defaults.headers.common["Authorization"] = `Bearer ${token}`
         const response = await api.get("/auth/me")
-        setUser(response.data.data)
+        setUser(response.data?.data || null)
       } catch (error) {
         localStorage.removeItem("token")
         delete api.defaults.headers.common["Authorization"]
@@ -38,19 +38,25 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     const response = await api.post("/auth/login", { email, password })
-    const { token, ...userData } = response.data.data
-    localStorage.setItem("token", token)
-    api.defaults.headers.common["Authorization"] = `Bearer ${token}`
-    setUser(userData)
+    const data = response.data?.data || {}
+    const { token, ...userData } = data
+    if (token) {
+      localStorage.setItem("token", token)
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`
+      setUser(userData)
+    }
     return userData
   }
 
   const register = async (userData) => {
     const response = await api.post("/auth/register", userData)
-    const { token, ...user } = response.data.data
-    localStorage.setItem("token", token)
-    api.defaults.headers.common["Authorization"] = `Bearer ${token}`
-    setUser(user)
+    const data = response.data?.data || {}
+    const { token, ...user } = data
+    if (token) {
+      localStorage.setItem("token", token)
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`
+      setUser(user)
+    }
     return user
   }
 
@@ -62,8 +68,9 @@ export const AuthProvider = ({ children }) => {
 
   const updateProfile = async (data) => {
     const response = await api.put("/auth/profile", data)
-    setUser(response.data.data)
-    return response.data.data
+    const userData = response.data?.data || null
+    setUser(userData)
+    return userData
   }
 
   return (

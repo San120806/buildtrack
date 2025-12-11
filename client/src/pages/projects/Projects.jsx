@@ -40,7 +40,7 @@ const Projects = () => {
       if (statusFilter) params.append("status", statusFilter)
 
       const response = await api.get(`/projects?${params.toString()}`)
-      setProjects(response.data.data)
+      setProjects(response.data?.data || [])
     } catch (error) {
       console.error("Failed to fetch projects:", error)
     } finally {

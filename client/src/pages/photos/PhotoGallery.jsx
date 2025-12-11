@@ -43,7 +43,7 @@ const PhotoGallery = () => {
   const fetchProjects = async () => {
     try {
       const response = await api.get("/projects")
-      setProjects(response.data.data)
+      setProjects(response.data?.data || [])
     } catch (error) {
       console.error("Failed to fetch projects:", error)
     }
@@ -56,7 +56,7 @@ const PhotoGallery = () => {
       if (selectedCategory) params.append("category", selectedCategory)
 
       const response = await api.get(`/photos/project/${selectedProject}?${params.toString()}`)
-      setPhotos(response.data.data)
+      setPhotos(response.data?.data || [])
     } catch (error) {
       console.error("Failed to fetch photos:", error)
     } finally {
