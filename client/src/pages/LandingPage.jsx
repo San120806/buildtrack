@@ -404,10 +404,10 @@ const LandingPage = () => {
       <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-4' : 'bg-transparent py-6'}`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <div className="p-2 rounded-lg" style={{ backgroundColor: colors.navy }}>
-              <LayoutDashboard className="w-6 h-6 text-white" />
+            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+              <LayoutDashboard className="w-5 h-5 text-white" />
             </div>
-            <span className="text-2xl font-bold tracking-tight" style={{ color: colors.navyDark }}>
+            <span className="text-xl font-bold text-gray-900">
               BuildTrack
             </span>
           </div>
@@ -451,10 +451,6 @@ const LandingPage = () => {
           <div className="flex flex-col lg:flex-row items-center gap-16">
             
             <div className="lg:w-5/12">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-8 text-sm font-semibold border" style={{ borderColor: colors.bluePale, backgroundColor: 'white', color: colors.navy }}>
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                v2.4 Live: Improved Architect Workflows
-              </div>
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight mb-6 text-slate-900">
                 Building control, <br/>
                 <span style={{ color: colors.blueSky }}>simplified.</span>
@@ -778,7 +774,10 @@ const LandingPage = () => {
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2">
-               <span className="font-bold text-slate-300 text-lg">BuildTrack</span>
+              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                <LayoutDashboard className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-xl font-bold text-slate-300">BuildTrack</span>
             </div>
             <div className="flex gap-6">
               <a href="#" className="hover:text-white transition-colors">Privacy</a>

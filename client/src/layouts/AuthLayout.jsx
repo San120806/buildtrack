@@ -1,4 +1,4 @@
-import { Building2 } from "lucide-react"
+import { LayoutDashboard } from "lucide-react"
 
 const AuthLayout = ({ children }) => {
   return (
@@ -6,10 +6,12 @@ const AuthLayout = ({ children }) => {
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-xl shadow-lg mb-4">
-            <Building2 className="w-8 h-8 text-primary-600" />
+          <div className="inline-flex items-center gap-2 justify-center mb-4">
+            <div className="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center shadow-lg">
+              <LayoutDashboard className="w-7 h-7 text-white" />
+            </div>
+            <h1 className="text-3xl font-bold text-white">BuildTrack</h1>
           </div>
-          <h1 className="text-3xl font-bold text-white">BuildTrack</h1>
           <p className="text-primary-200 mt-1">Construction Project Management</p>
         </div>
 

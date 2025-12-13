@@ -70,8 +70,8 @@ const MainLayout = () => {
         {/* Logo */}
         <div className="flex items-center justify-between h-16 px-4 border-b border-gray-200">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
-              <Building2 className="w-5 h-5 text-white" />
+            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+              <LayoutDashboard className="w-5 h-5 text-white" />
             </div>
             <span className="text-xl font-bold text-gray-900">BuildTrack</span>
           </div>
