@@ -232,7 +232,7 @@ export default function ClientDashboard() {
       <div className="bg-white rounded-lg border border-gray-200">
         <div className="p-4 border-b border-gray-200 flex items-center justify-between">
           <h2 className="font-semibold text-gray-900">My Projects</h2>
-          <Link to="/projects" className="text-sm text-primary hover:underline">
+          <Link to="/app/projects" className="text-sm text-primary hover:underline">
             View All
           </Link>
         </div>
@@ -243,7 +243,7 @@ export default function ClientDashboard() {
             projects.slice(0, 5).map((project) => (
               <Link
                 key={project._id}
-                to={`/projects/${project._id}`}
+                to={`/app/projects/${project._id}`}
                 className="block p-4 hover:bg-gray-50 transition-colors"
               >
                 <div className="flex items-center justify-between">
@@ -286,7 +286,7 @@ export default function ClientDashboard() {
             <FlagIcon className="h-5 w-5 text-green-600" />
             <h2 className="font-semibold text-gray-900">Milestones Achieved</h2>
           </div>
-          <Link to="/milestones" className="text-sm text-primary hover:underline">
+          <Link to="/app/milestones" className="text-sm text-primary hover:underline">
             View All
           </Link>
         </div>
@@ -341,7 +341,7 @@ export default function ClientDashboard() {
       <div className="bg-white rounded-lg border border-gray-200">
         <div className="p-4 border-b border-gray-200 flex items-center justify-between">
           <h2 className="font-semibold text-gray-900">Recent Site Photos</h2>
-          <Link to="/photos" className="text-sm text-primary hover:underline">
+          <Link to="/app/photos" className="text-sm text-primary hover:underline">
             View Gallery
           </Link>
         </div>

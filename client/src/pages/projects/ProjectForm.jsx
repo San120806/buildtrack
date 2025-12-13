@@ -85,7 +85,7 @@ const ProjectForm = () => {
       })
     } catch (error) {
       console.error("Failed to fetch project:", error)
-      navigate("/projects")
+      navigate("/app/projects")
     } finally {
       setFetchLoading(false)
     }
@@ -136,7 +136,7 @@ const ProjectForm = () => {
       } else {
         await api.post("/projects", formData)
       }
-      navigate("/projects")
+      navigate("/app/projects")
     } catch (err) {
       setError(err.response?.data?.message || "Failed to save project")
     } finally {
@@ -152,7 +152,7 @@ const ProjectForm = () => {
     <div className="max-w-3xl mx-auto">
       {/* Header */}
       <div className="flex items-center gap-4 mb-6">
-        <button onClick={() => navigate("/projects")} className="flex items-center text-gray-600 hover:text-gray-900">
+        <button onClick={() => navigate("/app/projects")} className="flex items-center text-gray-600 hover:text-gray-900">
           <ArrowLeft className="w-5 h-5 mr-1" />
           Back
         </button>
@@ -468,7 +468,7 @@ const ProjectForm = () => {
 
         {/* Submit */}
         <div className="flex items-center justify-end gap-4">
-          <button type="button" onClick={() => navigate("/projects")} className="btn btn-secondary">
+          <button type="button" onClick={() => navigate("/app/projects")} className="btn btn-secondary">
             Cancel
           </button>
           <button type="submit" disabled={loading} className="btn btn-primary flex items-center">

@@ -84,7 +84,7 @@ const Projects = () => {
           <p className="text-gray-600 mt-1">Manage and track your construction projects</p>
         </div>
         {(isContractor || isArchitect) && (
-          <Link to="/projects/new" className="btn btn-primary inline-flex items-center">
+          <Link to="/app/projects/new" className="btn btn-primary inline-flex items-center">
             <Plus className="w-5 h-5 mr-2" />
             New Project
           </Link>
@@ -154,7 +154,7 @@ const Projects = () => {
                       <div className="fixed inset-0 z-10" onClick={() => setOpenMenu(null)} />
                       <div className="absolute right-0 mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-20">
                         <Link
-                          to={`/projects/${project._id}`}
+                          to={`/app/projects/${project._id}`}
                           className="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
                         >
                           <Eye className="w-4 h-4" />
@@ -163,7 +163,7 @@ const Projects = () => {
                         {(isContractor || isArchitect) && (
                           <>
                             <Link
-                              to={`/projects/${project._id}/edit`}
+                              to={`/app/projects/${project._id}/edit`}
                               className="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
                             >
                               <Edit className="w-4 h-4" />
@@ -247,7 +247,7 @@ const Projects = () => {
             }
             action={
               (isContractor || isArchitect) && !search && !statusFilter ? (
-                <Link to="/projects/new" className="btn btn-primary inline-flex items-center">
+                <Link to="/app/projects/new" className="btn btn-primary inline-flex items-center">
                   <Plus className="w-5 h-5 mr-2" />
                   New Project
                 </Link>

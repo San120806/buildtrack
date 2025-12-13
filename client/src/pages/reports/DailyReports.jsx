@@ -101,7 +101,7 @@ const DailyReports = () => {
           <p className="text-gray-600 mt-1">Track daily progress and site activities</p>
         </div>
         {isContractor && (
-          <Link to="/reports/new" className="btn btn-primary inline-flex items-center">
+          <Link to="/app/reports/new" className="btn btn-primary inline-flex items-center">
             <Plus className="w-5 h-5 mr-2" />
             New Report
           </Link>
@@ -309,7 +309,7 @@ const DailyReports = () => {
             }
             action={
               isContractor ? (
-                <Link to="/reports/new" className="btn btn-primary inline-flex items-center">
+                <Link to="/app/reports/new" className="btn btn-primary inline-flex items-center">
                   <Plus className="w-5 h-5 mr-2" />
                   Create First Report
                 </Link>

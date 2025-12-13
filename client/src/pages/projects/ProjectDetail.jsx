@@ -45,7 +45,7 @@ const ProjectDetail = () => {
       setMilestones(milestonesRes.data.data)
     } catch (error) {
       console.error("Failed to fetch project:", error)
-      navigate("/projects")
+      navigate("/app/projects")
     } finally {
       setLoading(false)
     }
@@ -98,7 +98,7 @@ const ProjectDetail = () => {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-        <button onClick={() => navigate("/projects")} className="flex items-center text-gray-600 hover:text-gray-900">
+        <button onClick={() => navigate("/app/projects")} className="flex items-center text-gray-600 hover:text-gray-900">
           <ArrowLeft className="w-5 h-5 mr-1" />
           Back to Projects
         </button>
@@ -116,7 +116,7 @@ const ProjectDetail = () => {
         </div>
         <div className="flex items-center gap-2">
           {(isContractor || isArchitect) && (
-            <Link to={`/projects/${id}/edit`} className="btn btn-secondary inline-flex items-center">
+            <Link to={`/app/projects/${id}/edit`} className="btn btn-secondary inline-flex items-center">
               <Edit className="w-4 h-4 mr-2" />
               Edit Project
             </Link>
@@ -359,25 +359,25 @@ const ProjectDetail = () => {
               <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Links</h2>
               <div className="space-y-2">
                 <Link
-                  to={`/projects/${id}/milestones`}
+                  to={`/app/projects/${id}/milestones`}
                   className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50"
                 >
                   <CheckSquare className="w-5 h-5 text-gray-400" />
                   <span className="text-gray-700">Milestones</span>
                 </Link>
                 <Link
-                  to={`/projects/${id}/reports`}
+                  to={`/app/projects/${id}/reports`}
                   className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50"
                 >
                   <ClipboardList className="w-5 h-5 text-gray-400" />
                   <span className="text-gray-700">Daily Reports</span>
                 </Link>
-                <Link to={`/projects/${id}/photos`} className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50">
+                <Link to={`/app/projects/${id}/photos`} className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50">
                   <Camera className="w-5 h-5 text-gray-400" />
                   <span className="text-gray-700">Photo Gallery</span>
                 </Link>
                 <Link
-                  to={`/projects/${id}/inventory`}
+                  to={`/app/projects/${id}/inventory`}
                   className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50"
                 >
                   <Package className="w-5 h-5 text-gray-400" />

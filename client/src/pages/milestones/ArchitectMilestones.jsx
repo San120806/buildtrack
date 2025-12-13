@@ -64,7 +64,7 @@ const ArchitectMilestones = () => {
     try {
       setProcessing(true)
       await api.put(`/milestones/${selectedMilestone._id}/approve`, {
-        decision,
+        status: decision,
         comments: reviewNotes,
       })
 
@@ -72,7 +72,7 @@ const ArchitectMilestones = () => {
       setMilestones((prev) =>
         prev.map((m) =>
           m._id === selectedMilestone._id
-            ? { ...m, status: decision, approval: { comments: reviewNotes } }
+            ? { ...m, status: decision === "approved" ? "completed" : "rejected", approval: { comments: reviewNotes } }
             : m
         )
       )
@@ -285,7 +285,7 @@ const ArchitectMilestones = () => {
                         </button>
                       )}
                       <Link
-                        to={`/projects/${milestone.projectId}/milestones`}
+                        to={`/app/projects/${milestone.projectId}/milestones`}
                         className="btn btn-sm btn-secondary"
                       >
                         View Details
@@ -384,8 +384,8 @@ const ArchitectMilestones = () => {
       )}
 
       {/* Review Modal */}
-      {showReviewModal && selectedMilestone && (
-        <Modal onClose={() => setShowReviewModal(false)} title="Review Milestone">
+      {selectedMilestone && (
+        <Modal isOpen={showReviewModal} onClose={() => setShowReviewModal(false)} title="Review Milestone">
           <div className="space-y-4">
             <div>
               <h3 className="text-lg font-semibold text-gray-900">{selectedMilestone.title}</h3>

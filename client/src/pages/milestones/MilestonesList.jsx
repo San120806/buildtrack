@@ -171,14 +171,14 @@ const MilestonesList = () => {
                 Milestones help track major project achievements. To create a milestone:
               </p>
               <ol className="text-sm text-blue-700 space-y-2 mb-4 list-decimal list-inside">
-                <li>Go to <Link to="/projects" className="font-semibold underline">Projects</Link> page</li>
+                <li>Go to <Link to="/app/projects" className="font-semibold underline">Projects</Link> page</li>
                 <li>Click on a project to view its details</li>
                 <li>Click on the "Milestones" tab</li>
                 <li>Click the "+ Add Milestone" button</li>
                 <li>Fill in milestone details and save</li>
               </ol>
               <div className="flex gap-3">
-                <Link to="/projects" className="btn btn-primary btn-sm">
+                <Link to="/app/projects" className="btn btn-primary btn-sm">
                   Go to Projects
                 </Link>
               </div>
@@ -310,7 +310,7 @@ const MilestonesList = () => {
             ))}
           </div>
           {projects.length > 6 && (
-            <Link to="/projects" className="text-sm text-primary-600 hover:underline mt-3 inline-block">
+            <Link to="/app/projects" className="text-sm text-primary-600 hover:underline mt-3 inline-block">
               View all {projects.length} projects →
             </Link>
           )}
@@ -334,7 +334,7 @@ const MilestonesList = () => {
                         </Badge>
                       </div>
                       <Link
-                        to={`/projects/${milestone.projectId}`}
+                        to={`/app/projects/${milestone.projectId}`}
                         className="text-sm text-primary-600 hover:underline mt-1 inline-block"
                       >
                         {milestone.projectName}
@@ -351,7 +351,7 @@ const MilestonesList = () => {
                         </button>
                       )}
                       <Link
-                        to={`/projects/${milestone.projectId}/milestones`}
+                        to={`/app/projects/${milestone.projectId}/milestones`}
                         className="btn btn-sm btn-secondary"
                       >
                         View Details

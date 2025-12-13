@@ -91,7 +91,7 @@ const Dashboard = () => {
           <p className="text-gray-600 mt-1">Here's what's happening with your projects today.</p>
         </div>
         {isContractor && (
-          <Link to="/reports/new" className="btn btn-primary inline-flex items-center">
+          <Link to="/app/reports/new" className="btn btn-primary inline-flex items-center">
             <ClipboardList className="w-5 h-5 mr-2" />
             New Daily Report
           </Link>
@@ -106,7 +106,7 @@ const Dashboard = () => {
           subtitle={`${stats?.projects?.active || 0} active`}
           icon={FolderKanban}
           color="blue"
-          link="/projects"
+          link="/app/projects"
         />
         <StatCard
           title="Total Budget"
@@ -123,12 +123,12 @@ const Dashboard = () => {
           color="yellow"
         />
         <StatCard
-          title="Low Stock Alerts"
+          title="Inventory Items"
           value={stats?.inventory?.lowStockAlerts || 0}
-          subtitle="Items need attention"
+          subtitle="Track materials & supplies"
           icon={AlertTriangle}
           color="red"
-          link="/inventory"
+          link="/app/inventory"
         />
       </div>
 
@@ -195,7 +195,7 @@ const Dashboard = () => {
           )}
           {stats?.recentActivity?.length > 0 && (
             <Link
-              to="/reports"
+              to="/app/reports"
               className="inline-flex items-center text-sm text-primary-600 hover:text-primary-700 mt-4 font-medium"
             >
               View all reports <ArrowRight className="w-4 h-4 ml-1" />
@@ -229,7 +229,7 @@ const Dashboard = () => {
             <div className="flex items-center gap-3">
               <AlertTriangle className="w-8 h-8 text-red-600" />
               <div>
-                <p className="text-sm text-red-600 font-medium">Low Stock Alerts</p>
+                <p className="text-sm text-red-600 font-medium">Inventory Items</p>
                 <p className="text-2xl font-bold text-red-900">{stats.roleStats.lowStockAlerts || 0}</p>
               </div>
             </div>
@@ -247,7 +247,7 @@ const Dashboard = () => {
                 <p className="text-2xl font-bold text-purple-900">{stats.roleStats.awaitingApproval || 0}</p>
               </div>
             </div>
-            <Link to="/projects" className="inline-flex items-center text-sm text-purple-600 mt-3 font-medium">
+            <Link to="/app/projects" className="inline-flex items-center text-sm text-purple-600 mt-3 font-medium">
               Review now <ArrowRight className="w-4 h-4 ml-1" />
             </Link>
           </div>
@@ -268,7 +268,7 @@ const Dashboard = () => {
         <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           <Link
-            to="/projects/new"
+            to="/app/projects/new"
             className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors text-center"
           >
             <FolderKanban className="w-8 h-8 mx-auto text-gray-600 mb-2" />
@@ -277,14 +277,14 @@ const Dashboard = () => {
           {isContractor && (
             <>
               <Link
-                to="/reports/new"
+                to="/app/reports/new"
                 className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors text-center"
               >
                 <ClipboardList className="w-8 h-8 mx-auto text-gray-600 mb-2" />
                 <span className="text-sm font-medium text-gray-700">Daily Report</span>
               </Link>
               <Link
-                to="/inventory"
+                to="/app/inventory"
                 className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors text-center"
               >
                 <AlertTriangle className="w-8 h-8 mx-auto text-gray-600 mb-2" />
@@ -292,7 +292,7 @@ const Dashboard = () => {
               </Link>
             </>
           )}
-          <Link to="/photos" className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors text-center">
+          <Link to="/app/photos" className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors text-center">
             <Camera className="w-8 h-8 mx-auto text-gray-600 mb-2" />
             <span className="text-sm font-medium text-gray-700">Photo Gallery</span>
           </Link>

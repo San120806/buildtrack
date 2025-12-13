@@ -91,7 +91,7 @@ export default function ContractorDashboard() {
           </div>
           {!todayReport && (
             <Link
-              to="/reports/new"
+              to="/app/reports/new"
               className="flex items-center gap-2 px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition-colors"
             >
               <PlusIcon className="h-5 w-5" />
@@ -104,7 +104,7 @@ export default function ContractorDashboard() {
       {/* Quick Actions */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Link
-          to="/reports/new"
+          to="/app/reports/new"
           className="flex items-center gap-4 p-4 bg-white rounded-lg border border-gray-200 hover:border-primary hover:shadow-md transition-all"
         >
           <div className="p-3 bg-blue-100 rounded-lg">
@@ -117,7 +117,7 @@ export default function ContractorDashboard() {
         </Link>
 
         <Link
-          to="/milestones"
+          to="/app/milestones"
           className="flex items-center gap-4 p-4 bg-white rounded-lg border border-gray-200 hover:border-primary hover:shadow-md transition-all"
         >
           <div className="p-3 bg-green-100 rounded-lg">
@@ -130,7 +130,7 @@ export default function ContractorDashboard() {
         </Link>
 
         <Link
-          to="/photos"
+          to="/app/photos"
           className="flex items-center gap-4 p-4 bg-white rounded-lg border border-gray-200 hover:border-primary hover:shadow-md transition-all"
         >
           <div className="p-3 bg-purple-100 rounded-lg">
@@ -143,7 +143,7 @@ export default function ContractorDashboard() {
         </Link>
 
         <Link
-          to="/inventory"
+          to="/app/inventory"
           className="flex items-center gap-4 p-4 bg-white rounded-lg border border-gray-200 hover:border-primary hover:shadow-md transition-all"
         >
           <div className="p-3 bg-orange-100 rounded-lg">
@@ -181,7 +181,7 @@ export default function ContractorDashboard() {
         <div className="bg-white rounded-lg border border-gray-200">
           <div className="p-4 border-b border-gray-200 flex items-center justify-between">
             <h2 className="font-semibold text-gray-900">Recent Reports</h2>
-            <Link to="/reports" className="text-sm text-primary hover:underline">
+            <Link to="/app/reports" className="text-sm text-primary hover:underline">
               View All
             </Link>
           </div>
@@ -207,11 +207,11 @@ export default function ContractorDashboard() {
           </div>
         </div>
 
-        {/* Low Stock Alerts */}
+        {/* Inventory Items */}
         <div className="bg-white rounded-lg border border-gray-200">
           <div className="p-4 border-b border-gray-200 flex items-center justify-between">
-            <h2 className="font-semibold text-gray-900">Low Stock Alerts</h2>
-            <Link to="/inventory" className="text-sm text-primary hover:underline">
+            <h2 className="font-semibold text-gray-900">Inventory Items</h2>
+            <Link to="/app/inventory" className="text-sm text-primary hover:underline">
               Manage Inventory
             </Link>
           </div>

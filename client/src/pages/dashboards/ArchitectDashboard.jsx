@@ -164,7 +164,7 @@ export default function ArchitectDashboard() {
       {/* Quick Actions */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Link
-          to="/milestones/architect"
+          to="/app/milestones/architect"
           className="flex items-center gap-4 p-4 bg-white rounded-lg border border-gray-200 hover:border-primary hover:shadow-md transition-all"
         >
           <div className="p-3 bg-amber-100 rounded-lg">
@@ -177,7 +177,7 @@ export default function ArchitectDashboard() {
         </Link>
 
         <Link
-          to="/projects"
+          to="/app/projects"
           className="flex items-center gap-4 p-4 bg-white rounded-lg border border-gray-200 hover:border-primary hover:shadow-md transition-all"
         >
           <div className="p-3 bg-blue-100 rounded-lg">
@@ -190,7 +190,7 @@ export default function ArchitectDashboard() {
         </Link>
 
         <Link
-          to="/reports"
+          to="/app/reports"
           className="flex items-center gap-4 p-4 bg-white rounded-lg border border-gray-200 hover:border-primary hover:shadow-md transition-all"
         >
           <div className="p-3 bg-green-100 rounded-lg">
@@ -256,7 +256,7 @@ export default function ArchitectDashboard() {
         <div className="p-4 border-b border-gray-200 flex items-center justify-between">
           <h2 className="font-semibold text-gray-900">Recent Approvals</h2>
           <Link
-            to="/milestones?status=approved"
+            to="/app/milestones?status=approved"
             className="text-sm text-primary hover:underline"
           >
             View All

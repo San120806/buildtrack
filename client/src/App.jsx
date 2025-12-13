@@ -3,6 +3,9 @@
 import { Routes, Route, Navigate } from "react-router-dom"
 import { useAuth } from "./context/AuthContext"
 
+// Landing Page
+import LandingPage from "./pages/LandingPage"
+
 // Layouts
 import MainLayout from "./layouts/MainLayout"
 import AuthLayout from "./layouts/AuthLayout"
@@ -46,7 +49,7 @@ const ProtectedRoute = ({ children, roles }) => {
   }
 
   if (roles && !roles.includes(user.role)) {
-    return <Navigate to="/dashboard" replace />
+    return <Navigate to="/app/dashboard" replace />
   }
 
   return children
@@ -65,7 +68,7 @@ const PublicRoute = ({ children }) => {
   }
 
   if (user) {
-    return <Navigate to="/dashboard" replace />
+    return <Navigate to="/app/dashboard" replace />
   }
 
   return children
@@ -74,6 +77,9 @@ const PublicRoute = ({ children }) => {
 function App() {
   return (
     <Routes>
+      {/* Landing Page - Public */}
+      <Route path="/" element={<LandingPage />} />
+
       {/* Auth Routes */}
       <Route
         path="/login"
@@ -98,14 +104,14 @@ function App() {
 
       {/* Protected Routes */}
       <Route
-        path="/"
+        path="/app"
         element={
           <ProtectedRoute>
             <MainLayout />
           </ProtectedRoute>
         }
       >
-        <Route index element={<Navigate to="/dashboard" replace />} />
+        <Route index element={<Navigate to="/app/dashboard" replace />} />
         <Route path="dashboard" element={<Dashboard />} />
 
         <Route
@@ -168,8 +174,8 @@ function App() {
         <Route path="profile" element={<Profile />} />
       </Route>
 
-      {/* Catch all */}
-      <Route path="*" element={<Navigate to="/dashboard" replace />} />
+      {/* Catch all - redirect to landing */}
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )
 }

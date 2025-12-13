@@ -31,28 +31,28 @@ const MainLayout = () => {
   }
 
   const navItems = [
-    { to: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
-    { to: "/projects", icon: FolderKanban, label: "Projects" },
+    { to: "/app/dashboard", icon: LayoutDashboard, label: "Dashboard" },
+    { to: "/app/projects", icon: FolderKanban, label: "Projects" },
   ]
 
   // Add role-specific nav items
   if (isContractor) {
     navItems.push(
-      { to: "/reports", icon: ClipboardList, label: "Daily Reports" },
-      { to: "/milestones", icon: CheckSquare, label: "Milestones" },
-      { to: "/inventory", icon: Package, label: "Inventory" },
+      { to: "/app/reports", icon: ClipboardList, label: "Daily Reports" },
+      { to: "/app/milestones", icon: CheckSquare, label: "Milestones" },
+      { to: "/app/inventory", icon: Package, label: "Inventory" },
     )
   }
 
   if (isArchitect) {
-    navItems.push({ to: "/milestones/architect", icon: CheckSquare, label: "Milestone Reviews" })
+    navItems.push({ to: "/app/milestones/architect", icon: CheckSquare, label: "Milestone Reviews" })
   }
 
   if (isClient) {
-    navItems.push({ to: "/milestones", icon: CheckSquare, label: "Milestones" })
+    navItems.push({ to: "/app/milestones", icon: CheckSquare, label: "Milestones" })
   }
 
-  navItems.push({ to: "/photos", icon: Camera, label: "Photo Gallery" })
+  navItems.push({ to: "/app/photos", icon: Camera, label: "Photo Gallery" })
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -102,7 +102,7 @@ const MainLayout = () => {
         {/* User section at bottom */}
         <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200">
           <NavLink
-            to="/profile"
+            to="/app/profile"
             onClick={() => setSidebarOpen(false)}
             className={({ isActive }) =>
               `flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
@@ -167,7 +167,7 @@ const MainLayout = () => {
                     <div className="fixed inset-0 z-10" onClick={() => setUserMenuOpen(false)} />
                     <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-20">
                       <NavLink
-                        to="/profile"
+                        to="/app/profile"
                         onClick={() => setUserMenuOpen(false)}
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
                       >

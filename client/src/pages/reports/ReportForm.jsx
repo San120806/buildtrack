@@ -116,7 +116,7 @@ const ReportForm = () => {
 
     try {
       await api.post("/reports", formData)
-      navigate("/reports")
+      navigate("/app/reports")
     } catch (err) {
       setError(err.response?.data?.message || "Failed to create report")
     } finally {
@@ -141,7 +141,7 @@ const ReportForm = () => {
     <div className="max-w-3xl mx-auto">
       {/* Header */}
       <div className="flex items-center gap-4 mb-6">
-        <button onClick={() => navigate("/reports")} className="flex items-center text-gray-600 hover:text-gray-900">
+        <button onClick={() => navigate("/app/reports")} className="flex items-center text-gray-600 hover:text-gray-900">
           <ArrowLeft className="w-5 h-5 mr-1" />
           Back
         </button>
@@ -436,7 +436,7 @@ const ReportForm = () => {
 
         {/* Submit */}
         <div className="flex items-center justify-end gap-4">
-          <button type="button" onClick={() => navigate("/reports")} className="btn btn-secondary">
+          <button type="button" onClick={() => navigate("/app/reports")} className="btn btn-secondary">
             Cancel
           </button>
           <button type="submit" disabled={saving} className="btn btn-primary flex items-center">
