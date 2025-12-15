@@ -7,6 +7,7 @@ import api from "../../services/api"
 import { formatCurrency } from "../../utils/currency"
 import Badge from "../../components/ui/Badge"
 import LoadingSpinner from "../../components/ui/LoadingSpinner"
+import EmptyState from "../../components/ui/EmptyState"
 import {
   Plus,
   Search,
@@ -25,6 +26,7 @@ const Projects = () => {
   const { isContractor, isArchitect } = useAuth()
   const [projects, setProjects] = useState([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
   const [search, setSearch] = useState("")
   const [statusFilter, setStatusFilter] = useState("")
   const [openMenu, setOpenMenu] = useState(null)
@@ -35,6 +37,7 @@ const Projects = () => {
 
   const fetchProjects = async () => {
     try {
+      setError(null)
       const params = new URLSearchParams()
       if (search) params.append("search", search)
       if (statusFilter) params.append("status", statusFilter)
@@ -43,9 +46,13 @@ const Projects = () => {
       
       // Handle both response.data.data and response.data formats
       const projectsData = response.data?.data || response.data || []
-      setProjects(Array.isArray(projectsData) ? projectsData : [])
+      const validProjects = Array.isArray(projectsData) ? projectsData : []
+      
+      console.log('Projects fetched:', validProjects.length)
+      setProjects(validProjects)
     } catch (error) {
       console.error("Failed to fetch projects:", error)
+      setError(error.message || "Failed to load projects")
       setProjects([]) // Set empty array on error
     } finally {
       setLoading(false)
@@ -77,6 +84,35 @@ const Projects = () => {
 
   if (loading) {
     return <LoadingSpinner size="lg" className="h-64" />
+  }
+
+  // Show error state if fetch failed
+  if (error) {
+    return (
+      <div className="space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900">Projects</h1>
+            <p className="text-gray-600 mt-1">Manage and track your construction projects</p>
+          </div>
+          {(isContractor || isArchitect) && (
+            <Link to="/app/projects/new" className="btn btn-primary inline-flex items-center">
+              <Plus className="w-5 h-5 mr-2" />
+              New Project
+            </Link>
+          )}
+        </div>
+        <div className="card bg-red-50 border-red-200">
+          <div className="text-center py-8">
+            <div className="text-red-600 mb-2">⚠️ Error loading projects</div>
+            <p className="text-sm text-red-700 mb-4">{error}</p>
+            <button onClick={fetchProjects} className="btn btn-secondary">
+              Try Again
+            </button>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (
