@@ -13,6 +13,9 @@ const app = express()
 // Connect to database
 connectDB()
 
+// Disable ETags globally to prevent 304 caching issues
+app.set("etag", false)
+
 // Middleware
 app.use(helmet())
 app.use(
@@ -24,6 +27,16 @@ app.use(
 app.use(morgan("dev"))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+
+// Add cache-busting middleware for all API routes
+app.use("/api", (req, res, next) => {
+  res.set({
+    "Cache-Control": "no-store, no-cache, must-revalidate, private",
+    "Pragma": "no-cache",
+    "Expires": "0",
+  })
+  next()
+})
 
 // Static folder for uploads
 app.use("/uploads", express.static(path.join(__dirname, "uploads")))

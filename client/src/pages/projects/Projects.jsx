@@ -40,9 +40,13 @@ const Projects = () => {
       if (statusFilter) params.append("status", statusFilter)
 
       const response = await api.get(`/projects?${params.toString()}`)
-      setProjects(response.data?.data || [])
+      
+      // Handle both response.data.data and response.data formats
+      const projectsData = response.data?.data || response.data || []
+      setProjects(Array.isArray(projectsData) ? projectsData : [])
     } catch (error) {
       console.error("Failed to fetch projects:", error)
+      setProjects([]) // Set empty array on error
     } finally {
       setLoading(false)
     }
